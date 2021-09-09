@@ -13,6 +13,8 @@ docker run -tiP -p 8000:8000 -p 9944:9944 stromdao/substrate-dev
 
 ## Build
 ```shell
+git clone https://github.com/energychain/substrate-dev.git
+cd substrate-dev
 docker build .
 ```
 
