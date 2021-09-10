@@ -1,15 +1,22 @@
 # Dev Substrate Node
 Docker to get a real simple [substrate](https://substrate.dev/) node for development.
-This Image will let you jumpstart to the [interact](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact) sample of the substrate tutorial.
+This Image will let you jumpstart to the [interact](https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact) sample of the substrate tutorial or simply continue with one of the other tutorials.
 
- - Runs Frontend-Template on Port 8000
- - Runs Development node on Port 9944
+## Configuration
+| Option   |      Value      |
+|----------|:-------------:|
+| UI/Frontend  |  Port `8000` |
+| Blockchain Node  |  Port `9944` |
+| Work Directory  |  `/opt/substrate` |
 
 ## Run
  ```shell
 docker pull stromdao/substrate-dev:latest
-docker run -tiP -p 8000:8000 -p 9944:9944 stromdao/substrate-dev
+mkdir "$(pwd)"/run/substrate-node
+mkdir "$(pwd)"/run/substrate-front-end
+docker run -tiP -p 8000:8000 -p 9944:9944 --mount type=bind,source="$(pwd)"/run/,target=/opt/substrate/ stromdao/substrate-dev
  ```
+
 
 ## Build
 ```shell
